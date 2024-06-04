@@ -29,7 +29,7 @@ class AddTodoDialogFragment : DialogFragment() {
                         todoViewModel.insert(todo)
                     }
                 })
-                .setNegativeButton(R.string.cancel,DialogInterface.OnClickListener { dialog, id ->
+                .setNegativeButton(R.string.cancel,DialogInterface.OnClickListener { dialog, _ ->
                     dialog.cancel()
                 })
 

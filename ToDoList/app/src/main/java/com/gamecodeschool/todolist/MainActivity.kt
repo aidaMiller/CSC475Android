@@ -19,12 +19,16 @@ class MainActivity : AppCompatActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         val fab = findViewById<FloatingActionButton>(R.id.fab)
 
-        val adapter = TodoAdapter(listOf(), todoViewModel)
-        recyclerView.adapter = adapter
+        val adapter = TodoAdapter(todoViewModel)
         recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = adapter
+
 
         todoViewModel.allTodos.observe(this, Observer { todos ->
-            todos?.let { adapter.notifyDataSetChanged() }
+            todos?.let { it ->
+                adapter.todos = it
+                adapter.notifyDataSetChanged()
+            }
         })
 
         fab.setOnClickListener {
@@ -32,4 +36,5 @@ class MainActivity : AppCompatActivity() {
             dialog.show(supportFragmentManager, "AddTodoDialog")
         }
     }
+
 }

@@ -7,8 +7,10 @@ import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class TodoAdapter(private val todos: List<Todo>, private val viewModel: TodoViewModel) :
+class TodoAdapter(private val viewModel: TodoViewModel) :
     RecyclerView.Adapter<TodoAdapter.TodoViewHolder>() {
+
+         var todos = listOf<Todo>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_todo, parent, false)
