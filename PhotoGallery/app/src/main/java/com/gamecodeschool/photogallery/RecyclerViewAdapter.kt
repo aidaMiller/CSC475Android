@@ -11,54 +11,44 @@ import com.gamecodeschool.photogallery.RecyclerViewAdapter.RecyclerViewHolder
 import com.squareup.picasso.Picasso
 import java.io.File
 
-class RecyclerViewAdapter // on below line we have created a constructor.
-    (// creating a variable for our context and array list.
+// Adapter for RecyclerView to display a gallery of images
+class RecyclerViewAdapter
+    (
     private val context: Context, var imagePathArrayList: ArrayList<String>
 ) : RecyclerView.Adapter<RecyclerViewHolder>() {
 
-//    val imagePaths: ArrayList<String>
+    // Inflate the item layout and create the holder
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
-        // Inflate Layout in this method which we have created.
         val view = LayoutInflater.from(parent.context).inflate(R.layout.card_layout, parent, false)
         return RecyclerViewHolder(view)
     }
 
+    // Bind data to the view holder
     override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
-        // on below line we are getting the file from the
-        // path which we have stored in our list.
-
         val imgFile = File(imagePathArrayList[position])
 
-        // on below line we are checking if the file exists or not.
+        // Check if the image file exists
         if (imgFile.exists()) {
-            // if the file exists then we are displaying that file in our image view using picasso library.
-
+            // Load the image into the ImageView using Picasso
             Picasso.get().load(imgFile).placeholder(R.drawable.ic_launcher_background)
                 .into(holder.imageIV)
 
-            // on below line we are adding click listener to our item of recycler view.
-            holder.itemView.setOnClickListener { // inside on click listener we are creating a new intent
+            // Set click listener to open ImageDetailActivity with the image path
+            holder.itemView.setOnClickListener {
                 val i = Intent(context, ImageDetailActivity::class.java)
-
-                // on below line we are passing the image path to our new activity.
                 i.putExtra("imgPath", imagePathArrayList[position])
-
-                // at last we are starting our activity.
                 context.startActivity(i)
             }
         }
     }
 
+    // Return the total number of items
     override fun getItemCount(): Int {
-        // this method returns 
-        // the size of recyclerview
         return imagePathArrayList.size
     }
 
-    // View Holder Class to handle Recycler View.
+    // ViewHolder class to hold the views for each item
     class RecyclerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        // creating variables for our views.
-        // initializing our views with their ids.
         internal val imageIV: ImageView = itemView.findViewById(R.id.idIVImage)
     }
 }
