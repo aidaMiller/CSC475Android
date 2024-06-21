@@ -1,5 +1,6 @@
 package com.gamecodeschool.myrecipes.com.gamecodeschool.myrecipes
 
+import android.graphics.Bitmap
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
