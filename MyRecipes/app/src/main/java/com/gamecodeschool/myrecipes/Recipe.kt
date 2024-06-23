@@ -1,4 +1,4 @@
-package com.gamecodeschool.myrecipes.com.gamecodeschool.myrecipes
+package com.gamecodeschool.myrecipes
 
 import android.graphics.Bitmap
 import androidx.room.Entity

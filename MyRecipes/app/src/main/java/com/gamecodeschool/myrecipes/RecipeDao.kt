@@ -7,12 +7,14 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import com.gamecodeschool.myrecipes.com.gamecodeschool.myrecipes.Recipe
 
 @Dao
 interface RecipeDao {
     @Query("SELECT * FROM recipe_table")
     fun getAllRecipes(): LiveData<List<Recipe>>
+
+    @Query("SELECT * FROM recipe_table WHERE id = :id")
+    suspend fun getRecipe(id: Int): Recipe
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(recipe: Recipe)

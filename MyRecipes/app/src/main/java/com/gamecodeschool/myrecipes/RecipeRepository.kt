@@ -1,7 +1,6 @@
 package com.gamecodeschool.myrecipes
 
 import androidx.lifecycle.LiveData
-import com.gamecodeschool.myrecipes.com.gamecodeschool.myrecipes.Recipe
 
 class RecipeRepository(private val recipeDao: RecipeDao) {
 
@@ -17,5 +16,8 @@ class RecipeRepository(private val recipeDao: RecipeDao) {
 
     suspend fun delete(recipe: Recipe) {
         recipeDao.delete(recipe)
+    }
+   suspend fun getRecipe(id: Int): Recipe{
+        return recipeDao.getRecipe(id)
     }
 }
