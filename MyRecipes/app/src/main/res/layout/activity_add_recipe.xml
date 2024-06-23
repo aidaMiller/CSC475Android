@@ -29,6 +29,11 @@
                 android:text="Cancel" />
 
         </com.google.android.material.appbar.MaterialToolbar>
+        <ImageView
+            android:id="@+id/recipeImage"
+            android:layout_width="match_parent"
+            android:layout_height="100pt"
+            app:srcCompat="@drawable/baseline_cookie_24" />
 
         <EditText
             android:id="@+id/recipeName"

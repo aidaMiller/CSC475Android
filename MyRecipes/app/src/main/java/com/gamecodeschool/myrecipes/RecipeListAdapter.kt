@@ -40,8 +40,9 @@ class RecipeListAdapter(private val context: Context, private val viewModel: Rec
 
         fun bind(recipe: Recipe) {
             title.text = recipe.title
-            val drawable = if (recipe.isFavorite) itemView.resources.getDrawable(R.drawable.outline_bookmark_heart_24) else  itemView.resources.getDrawable(R.drawable.rounded_bookmark_24)
+            val drawable = if (recipe.isFavorite) itemView.resources.getDrawable(R.drawable.baseline_bookmark_24) else  itemView.resources.getDrawable(R.drawable.baseline_bookmark_border_24)
             favorite.setImageDrawable(drawable)
+            favorite.setBackgroundDrawable(null)
 //            if (recipe.image.isEmpty()) {
 
                 val decodedString: ByteArray = Base64.decode(recipe.image, Base64.DEFAULT)
